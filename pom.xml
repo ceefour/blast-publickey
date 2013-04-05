@@ -22,9 +22,20 @@
 		</dependency>
 		<dependency>
 			<groupId>blast</groupId>
+			<artifactId>blast-shell-karaf-commands</artifactId>
+			<version>0.13</version>
+		</dependency>
+		<dependency>
+			<groupId>blast</groupId>
 			<artifactId>blast-shell-karaf-ssh</artifactId>
 			<version>0.13</version>
 		</dependency>
+		<dependency>
+			<groupId>blast</groupId>
+			<artifactId>blast-shell-scala</artifactId>
+			<version>0.13</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>

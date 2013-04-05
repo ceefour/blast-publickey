@@ -24,6 +24,16 @@
         </property>
     </bean>
     
-    <import resource="classpath*:META-INF/shell/*-context.xml"/>
+    <import resource="classpath:META-INF/shell/command-context.xml"/>
+    
+    <!-- this one we need to replace: -->
+    <import resource="classpath:META-INF/shell/ssh-command-context.xml"/>
+    
+    <import resource="classpath:META-INF/shell/wrapper-context.xml"/>
+    <!-- import resource="classpath:META-INF/shell/groovy-context.xml"/>
+    <import resource="classpath:META-INF/shell/beanshell-context.xml"/-->
+    <import resource="classpath:META-INF/shell/scala-context.xml"/>
+    <import resource="classpath:META-INF/shell/base-command-context.xml"/>
+    <import resource="classpath:META-INF/shell/command-scanner-context.xml"/>
 
 </beans>
