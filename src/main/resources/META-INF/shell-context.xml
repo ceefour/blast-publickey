@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:cm="http://www.springframework.org/schema/context" xmlns:util="http://www.springframework.org/schema/util"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
-       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd">
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
 
+	<bean id="appConfig" class="com.hendyirawan.blastpublickey.AppConfig"/>
+	
 	<!-- 
 	Default configuration is in:
 	blast-shell/karaf/ssh/target/classes/META-INF/shell/ssh.properties
@@ -14,11 +16,14 @@
 	Username: test
 	Password: test001
 	 -->
+	<!-- context:property-placeholder does not support SpEL :( 
+	context:property-placeholder location="#{appConfig.dataFolder}/ssh.properties,
+		classpath:branding/branding.properties"/-->
     <bean name="propertyPlaceholderConfigurer"
-          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+          class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
         <property name="locations">
             <util:list>
-                <value>classpath:META-INF/shell/ssh.properties</value>
+                <value>#{appConfig.tenantEtcFolder}/ssh.properties</value>
                 <value>classpath:branding/branding.properties</value>
             </util:list>
         </property>

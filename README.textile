@@ -26,6 +26,7 @@ Hit '<ctrl-d>' or type 'logout' to disconnect from the terminal.
 
 adri@root> 
 
+p. 4. You can also use password authentication, login as user @test@ password @test@ 
 
 h2. How It Works & Where to Configure
 
@@ -33,7 +34,11 @@ It replaces the @META-INF/shell/ssh-command-context.xml@ resource.
 
 The configuration is in @blast-publickey/src/main/resources/META-INF/shell/ssh.properties@ .
 
-This properties file can and should be replaced in applications, or loaded from different location.
+Password authentication is by default in @src/main/resources/META-INF/shell/ssh.passwd@ .
+
+Public key authentication is by default in @~/tmp/authorized_keys@ . 
+
+These properties files can and should be replaced in applications, or loaded from different location.
 
 The application context is in @META-INF/shell-context.xml@, and applications should base
 its context from this.

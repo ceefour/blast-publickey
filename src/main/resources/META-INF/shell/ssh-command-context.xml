@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:cm="http://www.springframework.org/schema/context" xmlns:util="http://www.springframework.org/schema/util"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
-       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
 
-    <bean name="sshPropertyPlaceholderConfigurer"
+    <!-- set properties from the parent context, please! 
+    bean name="sshPropertyPlaceholderConfigurer"
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="location" value="classpath:META-INF/shell/ssh.properties"/>
-    </bean>
+    </bean-->
 
     <bean name="blueprintContainerAwarePostProcessor" class="blast.shell.osgi.BlueprintContainerAwarePostProcessor"/>
 
@@ -54,7 +55,7 @@
     <!-- this is a very basic username + password implementation -->
     <bean id="passwordAuthenticator" class="blast.shell.karaf.ssh.BasicPasswordAuthenticator">
         <constructor-arg index="0">
-            <util:properties location="classpath:ssh.passwd"/>
+            <util:properties location="#{appConfig.tenantEtcFolder}/ssh.passwd"/>
         </constructor-arg>
     </bean>
     <bean id="publickeyAuthenticator" class="org.apache.karaf.shell.ssh.KarafPublickeyAuthenticator"
