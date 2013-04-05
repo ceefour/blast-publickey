@@ -2,7 +2,7 @@ h1. blast-publickey
 
 Example of Blast SSH server with public key authentication.
 
-How to test:
+h2. How to Test
 
 1. create @~/tmp/authorized_keys@ . An example is: 
 
@@ -13,16 +13,27 @@ bc. ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDEtlBOtaFm0m3aDs8j1aBtxuOaGVjStOgipdQ3
 3. SSH to port 8103 localhost. You can login as any user, it doesn't matter.
 
 bc.. $ ssh -p8103 localhost
-
-
-   Welcome to Blast Shell 
-   An adaptation of the Apache Karaf Shell  
-
-
- Blast Shell version 0.13, using Apache Felix Karaf version ${karaf.version)
+  _________      .__                              
+ /   _____/ ____ |  |  __ _____  _______    ______
+ \_____  \ /  _ \|  | |  |  \  \/ /\__  \  /  ___/
+ /        (  <_> )  |_|  |  /\   /  / __ \_\___ \ 
+/_______  /\____/|____/____/  \_/  (____  /____  >
+        \/                              \/     \/ 
 
 Hit '<tab>' for a list of available commands
 and '[cmd] --help' for help on a specific command.
 Hit '<ctrl-d>' or type 'logout' to disconnect from the terminal.
 
 adri@root> 
+
+
+h2. How It Works & Where to Configure
+
+It replaces the @META-INF/shell/ssh-command-context.xml@ resource.
+
+The configuration is in @blast-publickey/src/main/resources/META-INF/shell/ssh.properties@ .
+
+This properties file can and should be replaced in applications, or loaded from different location.
+
+The application context is in @META-INF/shell-context.xml@, and applications should base
+its context from this.
