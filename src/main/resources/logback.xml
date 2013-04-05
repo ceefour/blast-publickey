@@ -15,6 +15,7 @@
 	    <RemoteHosts>localhost</RemoteHosts>
 	</appender-->
 
+	<logger name="org.apache.sshd" level="INFO" />
 	<logger name="org.apache.directory.shared" level="INFO" />
 	<logger name="org.springframework" level="INFO" />
 	<logger name="id.co" level="DEBUG" />
